@@ -51,3 +51,26 @@ True to the function call:
 ```
 r = pushed_obj.CreateApp("App name", "App description", True)
 ```
+
+## Get and create channels
+Just like when retrieving or creating apps, you need to make sure you have set your pushed userID and API key, before you can get or create channels:
+
+```
+pushed_obj.pushed_id = "Pushed userid"
+pushed_obj.pushed_apikey = "Pushed API key"
+
+# Return a JSON string with details about all your channels:
+my_channels = pushed_obj.GetChannels()
+```
+
+To create a new channel, you need the app_alias of the app you want the channel to be created in. You can find this in your account settings on pushed.co, or by using the GetApps() function. Once you got the app_alias, a new channel can be created with:
+
+```
+r = pushed_obj.CreateChannel("app_alias", "MyNewChannelName")
+```
+
+Just like when creating an app, a new channel is set as private, as default. If you want it to be public (accesbile by all pushed users), add True to the function call:
+
+```
+r = pushed_obj.CreateChannel("app_alias", "MyNewChannelName", True)
+```
