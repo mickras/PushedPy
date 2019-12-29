@@ -7,6 +7,12 @@ To send push notifications through Pushed.co, you need two things:
 
 Pushed.co is a paid service, but they offer a sandbox plan that gives you the ability to send up to 1.000 messages pr. month, for free.
 
+## Installation
+
+```
+pip install PushedPy
+```
+
 ## Basic usage
 To send a push notification in it's simplest form, simply do:
 
@@ -23,4 +29,25 @@ the Notification function:
 
 ```
 r = pushed_obj.Notification("My push message", "http://mysite.com")
+```
+
+## Get and create apps
+To retrieve a list of all apps associated with your Pushed account, or to create a new app, you need to set your Pushed userID and API key (You find these in the account settings on pushed.co):
+
+```
+pushed_obj.pushed_id = "Pushed userid"
+pushed_obj.pushed_apikey = "Pushed API key"
+
+# Return a JSON string with details about your apps:
+my_apps = pushed_obj.GetApps()
+
+# Create a new app:
+r = pushed_obj.CreateApp("App name", "App description")
+```
+
+By default, a new app is created as private, but if you want it to be public, add
+True to the function call:
+
+```
+r = pushed_obj.CreateApp("App name", "App description", True)
 ```
